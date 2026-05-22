@@ -1,4 +1,5 @@
 ﻿using Dsw2026Ej11.Domain;
+using System.Linq;
 
 namespace Dsw2026Ej11.Collections;
 
@@ -18,7 +19,7 @@ namespace Dsw2026Ej11.Collections;
  */
 public class CasoLinq
 {
-    private List<Libro> libros = Libro.CrearLista();
+    private IEnumerable<Libro> libros = Libro.CrearLista();
 
     // 1. Obtener el primer libro (GetPrimero)
     public Libro GetPrimero()
@@ -26,13 +27,13 @@ public class CasoLinq
         return libros.First();
     }
 
-    // 2. Obtener el último libro (GetUltimo)
+    //  2. Obtener el último libro (GetUltimo)
     public Libro GetUltimo()
     {
         return libros.Last();
     }
 
-    //3. Obtener la suma de precios (GetTotalPrecios)
+    //  3. Obtener la suma de precios(GetTotalPrecios)
     public decimal GetTotalPrecios()
     {
         return libros.Sum(l => l.Precio);
@@ -45,46 +46,43 @@ public class CasoLinq
     }
 
     // 5. Obtener la lista de libros con Id mayor a 15 (GetListById)
-    public List<Libro> GetListById()
+    public IEnumerable<Libro> GetListById()
     {
-        return libros.Where(l => l.Id > 15).ToList();
+        return libros.Where(l => l.Id > 15);
     }
 
-    // 6. Obtener una lista de cada libro con su título y precio en formato moneda (GetLibros) (debe retornar una lista de string)
-    public List<string> GetLibros()
+    //  6. Obtener una lista de cada libro con su título y precio en formato moneda (GetLibros) (debe retornar una lista de string)
+    public IEnumerable<string> GetLibros()
     {
-        return libros
-            .Select(l => $"{l.Titulo} - {l.Precio:C}")
-            .ToList();
+        return libros.Select(l => $"{l.Titulo} - {l.Precio:C}");
     }
 
-    // 7. Obtener el libro con el precio más alto (GetMayorPrecio)
+    // 7.Obtener el libro con el precio más alto (GetMayorPrecio)
+
     public Libro GetMayorPrecio()
     {
         return libros.OrderByDescending(l => l.Precio).First();
     }
 
-    //  8. Obtener el libro con el precio más bajo (GetMenorPrecio)
+    // 8. Obtener el libro con el precio más bajo (GetMenorPrecio)
     public Libro GetMenorPrecio()
     {
         return libros.OrderBy(l => l.Precio).First();
     }
 
     // 9. Obtener los libros cuyo precio sea mayor al promedio (GetMayorPromedio)
-    public List<Libro> GetMayorPromedio()
+    public IEnumerable<Libro> GetMayorPromedio()
     {
         decimal promedio = libros.Average(l => l.Precio);
 
-        return libros
-            .Where(l => l.Precio > promedio)
-            .ToList();
+        return libros.Where(l => l.Precio > promedio);
     }
 
-    // 10. Obtener los libros ordenados por título de forma descendente
-    public List<Libro> GetOrdenadosTituloDesc()
+     //10. Obtener los libros ordenados por título de forma descendente
+    public IEnumerable<Libro> GetOrdenadosTituloDesc()
     {
-        return libros
-            .OrderByDescending(l => l.Titulo)
-            .ToList();
+        return libros.OrderByDescending(l => l.Titulo);
     }
 }
+
+
