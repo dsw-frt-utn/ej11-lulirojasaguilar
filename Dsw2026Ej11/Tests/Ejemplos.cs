@@ -1,4 +1,5 @@
 ﻿using Dsw2026Ej11.Collections;
+using System.Collections.Generic;
 using Dsw2026Ej11.Domain;
 
 namespace Dsw2026Ej11.Tests;
@@ -128,52 +129,66 @@ internal class Ejemplos
 
         // 1. Primer libro
         Console.WriteLine("=== PRIMER LIBRO ===");
-        Console.WriteLine(caso.GetPrimero());
+        Libro primero = caso.GetPrimero();
+        Console.WriteLine(primero);
 
         // 2. Último libro
         Console.WriteLine("\n=== ÚLTIMO LIBRO ===");
-        Console.WriteLine(caso.GetUltimo());
+        Libro ultimo = caso.GetUltimo();
+        Console.WriteLine(ultimo);
 
         // 3. Suma de precios
         Console.WriteLine("\n=== SUMA DE PRECIOS ===");
-        Console.WriteLine(caso.GetTotalPrecios());
+        decimal totalPrecios = caso.GetTotalPrecios();
+        Console.WriteLine(totalPrecios);
 
         // 4. Promedio de precios
         Console.WriteLine("\n=== PROMEDIO DE PRECIOS ===");
-        Console.WriteLine(caso.GetPromedioPrecios());
+        decimal promedio = caso.GetPromedioPrecios();
+        Console.WriteLine(promedio);
 
         // 5. Libros con Id mayor a 15
         Console.WriteLine("\n=== LIBROS CON ID MAYOR A 15 ===");
-        foreach (Libro libro in caso.GetListById())
+        IEnumerable<Libro> librosMayores15 = caso.GetListById();
+
+        foreach (Libro libro in librosMayores15)
         {
             Console.WriteLine(libro);
         }
 
         // 6. Título y precio en formato moneda
         Console.WriteLine("\n=== TÍTULO Y PRECIO ===");
-        foreach (string libro in caso.GetLibros())
+        IEnumerable<string> librosFormateados = caso.GetLibros();
+
+        foreach (string libro in librosFormateados)
         {
             Console.WriteLine(libro);
         }
 
-        // 7. Libro con precio más alto
+        // 7. Libro con mayor precio
         Console.WriteLine("\n=== LIBRO CON MAYOR PRECIO ===");
-        Console.WriteLine(caso.GetMayorPrecio());
+        Libro mayorPrecio = caso.GetMayorPrecio();
+        Console.WriteLine(mayorPrecio);
 
-        // 8. Libro con precio más bajo
+        // 8. Libro con menor precio
         Console.WriteLine("\n=== LIBRO CON MENOR PRECIO ===");
-        Console.WriteLine(caso.GetMenorPrecio());
+        Libro menorPrecio = caso.GetMenorPrecio();
+        Console.WriteLine(menorPrecio);
 
-        // 9. Libros con precio superior al promedio
+        // 9. Libros con precio mayor al promedio
         Console.WriteLine("\n=== LIBROS CON PRECIO MAYOR AL PROMEDIO ===");
-        foreach (Libro libro in caso.GetMayorPromedio())
+        IEnumerable<Libro> librosMayorPromedio = caso.GetMayorPromedio();
+
+        foreach (Libro libro in librosMayorPromedio)
         {
             Console.WriteLine(libro);
         }
 
         // 10. Libros ordenados por título descendente
         Console.WriteLine("\n=== LIBROS ORDENADOS POR TÍTULO DESCENDENTE ===");
-        foreach (Libro libro in caso.GetOrdenadosTituloDesc())
+        IEnumerable<Libro> librosOrdenados = caso.GetOrdenadosTituloDesc();
+
+        foreach (Libro libro in librosOrdenados)
         {
             Console.WriteLine(libro);
         }
