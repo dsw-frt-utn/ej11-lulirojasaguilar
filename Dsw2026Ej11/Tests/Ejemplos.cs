@@ -124,6 +124,58 @@ internal class Ejemplos
     //Realizar una llamada a cada método definido en CasoLinq y mostar por consola según corresponda
     public static void EjemploLinq()
     {
+        CasoLinq caso = new CasoLinq();
 
+        // 1. Primer libro
+        Console.WriteLine("=== PRIMER LIBRO ===");
+        Console.WriteLine(caso.GetPrimero());
+
+        // 2. Último libro
+        Console.WriteLine("\n=== ÚLTIMO LIBRO ===");
+        Console.WriteLine(caso.GetUltimo());
+
+        // 3. Suma de precios
+        Console.WriteLine("\n=== SUMA DE PRECIOS ===");
+        Console.WriteLine(caso.GetTotalPrecios());
+
+        // 4. Promedio de precios
+        Console.WriteLine("\n=== PROMEDIO DE PRECIOS ===");
+        Console.WriteLine(caso.GetPromedioPrecios());
+
+        // 5. Libros con Id mayor a 15
+        Console.WriteLine("\n=== LIBROS CON ID MAYOR A 15 ===");
+        foreach (Libro libro in caso.GetListById())
+        {
+            Console.WriteLine(libro);
+        }
+
+        // 6. Título y precio en formato moneda
+        Console.WriteLine("\n=== TÍTULO Y PRECIO ===");
+        foreach (string libro in caso.GetLibros())
+        {
+            Console.WriteLine(libro);
+        }
+
+        // 7. Libro con precio más alto
+        Console.WriteLine("\n=== LIBRO CON MAYOR PRECIO ===");
+        Console.WriteLine(caso.GetMayorPrecio());
+
+        // 8. Libro con precio más bajo
+        Console.WriteLine("\n=== LIBRO CON MENOR PRECIO ===");
+        Console.WriteLine(caso.GetMenorPrecio());
+
+        // 9. Libros con precio superior al promedio
+        Console.WriteLine("\n=== LIBROS CON PRECIO MAYOR AL PROMEDIO ===");
+        foreach (Libro libro in caso.GetMayorPromedio())
+        {
+            Console.WriteLine(libro);
+        }
+
+        // 10. Libros ordenados por título descendente
+        Console.WriteLine("\n=== LIBROS ORDENADOS POR TÍTULO DESCENDENTE ===");
+        foreach (Libro libro in caso.GetOrdenadosTituloDesc())
+        {
+            Console.WriteLine(libro);
+        }
     }
 }
